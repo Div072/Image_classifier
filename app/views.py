@@ -8,9 +8,11 @@ import numpy as np
 
 
 # Create your views here.
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 def index(request):
+
     return render(request, "app/index.html")
 
 
@@ -35,7 +37,7 @@ def predic(request):
     data = next(iter(x))
     #x = x.batch(1)
     #data = next(iter(x))
-    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
     #img_path = os.path.join(BASE_DIR, 'media/photo')
     #img_path = os.path.dirname(img_path)
     # test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
