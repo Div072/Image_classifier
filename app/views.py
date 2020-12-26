@@ -4,6 +4,7 @@ import tensorflow as tf
 import os
 from tensorflow.python.ops import image_ops
 from tensorflow.python.ops import io_ops
+import numpy as np
 
 
 
