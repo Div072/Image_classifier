@@ -9,6 +9,8 @@ import numpy as np
 
 # Create your views here.
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+model_path = BASE_DIR + '/model'
+model = tf.keras.models.load_model(model_path)
 
 
 def index(request):
@@ -34,7 +36,7 @@ def predic(request):
     img.set_shape((256, 256, 3))
     x = tf.data.Dataset.from_tensors(img)
     x = x.batch(1)
-    data = next(iter(x))
+
     #x = x.batch(1)
     #data = next(iter(x))
 
@@ -42,9 +44,8 @@ def predic(request):
     #img_path = os.path.dirname(img_path)
     # test_dataset = tf.keras.preprocessing.image_dataset_from_directory(
     #    img_path, color_mode='rgb', batch_size=1)
-    model_path = BASE_DIR + '/model'
-    model = tf.keras.models.load_model(model_path)
-    result = model(data)
+
+    result = model.predict(x)
     result_ph = np.asarray(result[0][0])
     result_normal = np.asarray(result[0][1])
 
